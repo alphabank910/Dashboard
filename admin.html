@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alpha Bank | Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="dashboard.css" />
+</head>
+<body class="app-body" data-admin-page="true">
+  <div class="app-layout">
+    <aside class="sidebar glass-card">
+      <div>
+        <div class="logo-block">
+          <div class="brand-badge">AB</div>
+          <div>
+            <p class="eyebrow">Alpha Bank</p>
+            <h2>Control Center</h2>
+            <p class="brand-tagline">Next Generation Digital Banking</p>
+          </div>
+        </div>
+
+        <nav class="nav-menu">
+          <a href="#adminOverview" class="nav-link active">Overview</a>
+          <a href="#adminCreateUser" class="nav-link">Create User</a>
+          <a href="#adminUsers" class="nav-link">View Users</a>
+          <a href="#adminTransactions" class="nav-link">Transactions</a>
+        </nav>
+      </div>
+
+      <button class="btn btn-secondary btn-block logout-btn">Logout</button>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar glass-card" id="adminOverview">
+        <div>
+          <p class="eyebrow">Admin Dashboard</p>
+          <h1>Bank Operations</h1>
+          <p class="page-description">Create customer accounts, manage balances, and supervise transaction outcomes with a responsive control center.</p>
+        </div>
+        <div class="topbar-balance">
+          <span>Bank Reserve</span>
+          <strong id="bankReserveBalance">$0.00</strong>
+        </div>
+      </header>
+
+      <section class="stats-grid admin-grid-stats">
+        <article class="mini-stat glass-card">
+          <span class="mini-stat-icon">👥</span>
+          <div>
+            <p>Total Users</p>
+            <h3 id="adminUserCount">0</h3>
+          </div>
+        </article>
+
+        <article class="mini-stat glass-card">
+          <span class="mini-stat-icon">🧾</span>
+          <div>
+            <p>Total Transactions</p>
+            <h3 id="adminTransactionCount">0</h3>
+          </div>
+        </article>
+
+        <article class="mini-stat glass-card">
+          <span class="mini-stat-icon">💱</span>
+          <div>
+            <p>Supported Currencies</p>
+            <h3>GBP / USD / EUR</h3>
+          </div>
+        </article>
+      </section>
+
+      <section class="content-grid admin-content-grid">
+        <article class="panel glass-card form-panel" id="adminCreateUser">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Create User</p>
+              <h3>Open Customer Account</h3>
+            </div>
+          </div>
+
+          <div id="adminMessage" class="alert-box"></div>
+
+          <form id="adminCreateUserForm" class="transfer-form" autocomplete="off">
+            <label class="input-group">
+              <span>Full Name</span>
+              <input type="text" id="adminFullName" placeholder="Enter full name" required />
+            </label>
+
+            <label class="input-group">
+              <span>Email</span>
+              <input type="email" id="adminEmail" placeholder="Enter email address" required />
+            </label>
+
+            <label class="input-group">
+              <span>Phone Number</span>
+              <input type="text" id="adminPhone" placeholder="Enter phone number" required />
+            </label>
+
+            <label class="input-group">
+              <span>Password</span>
+              <div class="password-wrap">
+                <input type="password" id="adminPassword" placeholder="Enter password" required />
+                <button type="button" class="toggle-password" data-target="adminPassword">Show</button>
+              </div>
+            </label>
+
+            <label class="input-group">
+              <span>Confirm Password</span>
+              <div class="password-wrap">
+                <input type="password" id="adminConfirmPassword" placeholder="Confirm password" required />
+                <button type="button" class="toggle-password" data-target="adminConfirmPassword">Show</button>
+              </div>
+            </label>
+
+            <label class="input-group">
+              <span>Region</span>
+              <select id="adminRegion" required>
+                <option value="USA">USA</option>
+                <option value="UK">UK</option>
+                <option value="EUROPE">EUROPE</option>
+              </select>
+            </label>
+
+            <label class="input-group">
+              <span>Account Currency</span>
+              <select id="adminCurrency" required>
+                <option value="USD">Dollars (USD)</option>
+                <option value="GBP">Pounds (GBP)</option>
+                <option value="EUR">Euro (EUR)</option>
+              </select>
+            </label>
+
+            <label class="input-group">
+              <span>Initial Balance</span>
+              <input type="number" id="adminInitialBalance" min="0" step="0.01" placeholder="Enter opening balance" required />
+            </label>
+
+            <button type="submit" class="btn btn-primary btn-block">Create Customer Account</button>
+          </form>
+
+          <div class="panel-header" style="margin-top: 24px;">
+            <div>
+              <p class="eyebrow">Add Balance</p>
+              <h3>Credit Existing Customer</h3>
+            </div>
+          </div>
+
+          <form id="adminAddBalanceForm" class="transfer-form" autocomplete="off">
+            <label class="input-group">
+              <span>Account Number</span>
+              <input type="text" id="adminBalanceAccountNumber" list="adminUserAccountOptions" placeholder="Enter customer account number" required />
+            </label>
+
+            <label class="input-group">
+              <span>Amount</span>
+              <input type="number" id="adminBalanceAmount" min="0.01" step="0.01" placeholder="Enter amount to add" required />
+            </label>
+
+            <button type="submit" class="btn btn-secondary btn-block">Add Balance</button>
+          </form>
+          <datalist id="adminUserAccountOptions"></datalist>
+        </article>
+
+        <article class="panel glass-card" id="adminUsers">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">All Customers</p>
+              <h3>Registered Users</h3>
+            </div>
+          </div>
+          <div id="adminUsersTable" class="table-wrapper admin-table-container"></div>
+        </article>
+      </section>
+
+      <section class="content-grid single-panel" id="adminTransactions">
+        <article class="panel glass-card">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Transaction Control</p>
+              <h3>Manage Transactions</h3>
+            </div>
+          </div>
+          <div id="adminTransactionsTable" class="table-wrapper admin-table-container"></div>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase.js"></script>
+  <script src="script.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>

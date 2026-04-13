@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alpha Bank | Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="dashboard.css" />
+</head>
+<body class="app-body" data-protected="true">
+  <div class="app-layout">
+    <aside class="sidebar glass-card">
+      <div>
+        <div class="logo-block">
+          <div class="brand-badge">AB</div>
+          <div>
+            <p class="eyebrow">Alpha Bank</p>
+            <h2>Banking Suite</h2>
+            <p class="brand-tagline">Next Generation Digital Banking</p>
+          </div>
+        </div>
+
+        <nav class="nav-menu">
+          <a href="dashboard.html" class="nav-link active">Overview</a>
+          <a href="transfer.html" class="nav-link">Transfer</a>
+          <a href="transactions.html" class="nav-link">Transactions</a>
+          <a href="profile.html" class="nav-link">Profile</a>
+        </nav>
+      </div>
+
+      <button class="btn btn-secondary btn-block logout-btn">Logout</button>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar glass-card">
+        <div>
+          <p class="eyebrow">Dashboard</p>
+          <h1 class="dashboard-greeting">Hello, <span data-user-name>Customer</span></h1>
+          <p class="page-description">Track your balance, monitor transaction activity, and move money with a premium Alpha Bank experience.</p>
+        </div>
+        <div class="topbar-actions">
+          <div class="dashboard-profile-avatar" aria-label="Profile image">
+            <img id="dashboardProfileImage" class="user-profile-image" data-profile-image alt="Profile image" />
+            <span class="dashboard-profile-fallback" data-profile-avatar-text>AB</span>
+          </div>
+          <div class="topbar-balance">
+            <span>Day Mode Default</span>
+            <strong>Alpha Premium</strong>
+          </div>
+          <a href="transfer.html" class="btn btn-primary send-money-btn">New Transfer</a>
+        </div>
+      </header>
+
+      <section class="hero-card glass-card fintech-card">
+        <div class="hero-balance">
+          <p class="eyebrow">Available Balance</p>
+          <h2 id="dashboardBalance" class="balance-amount">$0.00</h2>
+          <p class="brand-tagline">Next Generation Digital Banking</p>
+          <div class="hero-chip">
+            <span>Alpha Secure</span>
+          </div>
+          <div class="account-overview-grid">
+            <div class="overview-pill">
+              <span>Account Name</span>
+              <strong data-user-name>Customer</strong>
+            </div>
+            <div class="overview-pill">
+              <span>Email</span>
+              <strong id="dashboardEmail">-</strong>
+            </div>
+            <div class="overview-pill">
+              <span>Phone</span>
+              <strong id="dashboardPhone">-</strong>
+            </div>
+          </div>
+        </div>
+        <div class="bank-card-shell">
+          <div class="bank-card">
+            <div class="bank-card-top">
+              <span>Alpha Bank</span>
+              <span class="card-chip">Premium</span>
+            </div>
+            <div class="bank-card-brand">Next Generation Digital Banking</div>
+            <div class="bank-card-balance-label">Account Holder</div>
+            <div class="bank-card-holder" data-user-name>Customer</div>
+            <div class="bank-card-balance-label">Available Balance</div>
+            <div class="bank-card-amount" id="dashboardBalanceCard">$0.00</div>
+            <div class="bank-card-number" id="dashboardAccountNumber">0000000000</div>
+            <div class="bank-card-footer">
+              <div>
+                <span>Region</span>
+                <strong id="dashboardRegion">-</strong>
+              </div>
+              <div>
+                <span>Currency</span>
+                <strong id="dashboardCurrency">USD</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="stats-grid">
+        <article class="mini-stat glass-card">
+          <span class="mini-stat-icon">💼</span>
+          <div>
+            <p>Total Balance</p>
+            <h3 id="miniBalance">$0.00</h3>
+          </div>
+        </article>
+
+        <article class="mini-stat glass-card">
+          <span class="mini-stat-icon">📈</span>
+          <div>
+            <p>Total Credits</p>
+            <h3 id="totalCredits">$0.00</h3>
+          </div>
+        </article>
+
+        <article class="mini-stat glass-card">
+          <span class="mini-stat-icon">📉</span>
+          <div>
+            <p>Total Debits</p>
+            <h3 id="totalDebits">$0.00</h3>
+          </div>
+        </article>
+      </section>
+
+      <section class="content-grid">
+        <article class="panel glass-card">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Recent activity</p>
+              <h3 class="activity-title">Last 5 Transactions</h3>
+            </div>
+            <a href="transactions.html" class="text-link">View All</a>
+          </div>
+          <div id="recentTransactions" class="transaction-list"></div>
+        </article>
+
+        <article class="panel glass-card quick-actions-panel">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Quick actions</p>
+              <h3>Move faster</h3>
+            </div>
+          </div>
+          <div class="quick-actions-grid">
+            <a href="transfer.html" class="quick-action-card">
+              <span>💸</span>
+              <strong>Send Money</strong>
+              <p>Transfer instantly to another account.</p>
+            </a>
+            <button type="button" class="quick-action-card" data-copy-account="true">
+              <span>📥</span>
+              <strong>Receive</strong>
+              <p>Copy your account number and share it securely.</p>
+            </button>
+            <a href="transactions.html" class="quick-action-card">
+              <span>🧾</span>
+              <strong>Transactions</strong>
+              <p>Review every credit and debit status.</p>
+            </a>
+            <a href="profile.html" class="quick-action-card">
+              <span>👤</span>
+              <strong>Profile</strong>
+              <p>Review your account identity and balance.</p>
+            </a>
+          </div>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase.js"></script>
+  <script src="script.js"></script>
+  <script src="auth.js"></script>
+  <script src="transactions.js"></script>
+</body>
+</html>
